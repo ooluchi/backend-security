@@ -1,0 +1,12 @@
+## Week 1
+- What I built: Node "Hello API", Python calculator
+- Security I added: plan for helmet/CORS/rate limit (Week 2)
+- Scans I ran: npm audit (GitHub Actions)
+- Issues found: 0 high/critical
+- Evidence: (link to Actions run)
+
+## Threat Model 
+- Entry points: "/" (hello), later "/api/*"
+- Important data: (none yet—coming later)
+- Risks to watch: IDOR, secret leaks, brute force
+
