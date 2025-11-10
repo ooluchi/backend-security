@@ -1,0 +1,26 @@
+name: security-audit
+on: [push, pull_request]
+
+jobs:
+  npm-audit:
+    runs-on: ubuntu-latest
+    # Tell Actions to run commands inside your Node subfolder
+    defaults:
+      run:
+        working-directory: week01/node-hello-api
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # If you don't have a package-lock.json yet, this falls back to npm install
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      # Fail the job if high/critical vulns are found
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
